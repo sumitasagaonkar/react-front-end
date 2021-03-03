@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import HomeApp from './HomeApp';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NavApp from './NavApp';
+import LogInApp from './LogInApp';
+import { useHistory } from 'react-router-dom'
+import RegisterApp from './RegisterApp';
+import LogOut from './LogOut'
+
+
 
 function App() {
+  const history = useHistory();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+
+      <Router>
+
+
+        <Switch>
+
+          <Route path='/login' component={LogInApp} />
+          <Route path='/Register' component={RegisterApp} histroyy={history} />
+          <Route path='/' exact component={HomeApp} />
+          <Route path='/logout' component={LogOut} />
+        </Switch>
+      </Router>
+
+
     </div>
   );
 }
